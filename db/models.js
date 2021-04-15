@@ -11,12 +11,8 @@ console.log("DataBase URL", databaseURI);
 mongoose.connect(databaseURI) 
 
 const conn = mongoose.connection
-conn.on('connected', () => {
-  
-  //if connect to local mongo db
-  console.log('db connect success to local mongodb!');
-  //if connect to cloud mongo db
-  // console.log('db connect success to cloud mongodb!')
+conn.on('connected', () => {   
+  console.log('DB connect success to mongodb!'); 
 })
 
 
