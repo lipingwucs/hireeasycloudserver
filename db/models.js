@@ -4,7 +4,9 @@ Contains some Model modules that manipulate database collection data
 
 /*Connect to the database*/
 const mongoose = require('mongoose')
-const databaseURI = databaseUri || 'mongodb://localhost:27017/hireeasy_db'
+const databaseURI = process.env.databaseUri  || 'mongodb://localhost:27017/hireeasy_db'
+
+
 console.log("DataBase URL", databaseURI);
 mongoose.connect(databaseURI) 
 

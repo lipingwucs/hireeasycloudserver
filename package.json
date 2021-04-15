@@ -4,7 +4,7 @@
   "private": true,
   "homepage": "http://localhost:4000/",
   "scripts": {
-    "start": "nodemon ./bin/www",
+    "start": "node ./bin/www",
     "test": "jest",
     "test:watch": "npm test -- --watch"
   },
