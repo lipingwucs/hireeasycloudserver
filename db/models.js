@@ -4,7 +4,9 @@ Contains some Model modules that manipulate database collection data
 
 /*Connect to the database*/
 const mongoose = require('mongoose')
-mongoose.connect('mongodb://localhost:27017/hireeasy_db')
+const databaseURI = databaseUri || 'mongodb://localhost:27017/hireeasy_db'
+mongoose.connect(databaseURI) 
+
 const conn = mongoose.connection
 conn.on('connected', () => {
   
