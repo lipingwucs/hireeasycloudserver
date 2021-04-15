@@ -1,0 +1,29 @@
+.error-msg {
+  color: red;
+  text-align: center;
+  font-size: 18px;
+}
+.am-tab-bar {
+  /*Make the navigation always at the bottom*/
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: inherit;
+}
+.sticky-header {
+  /*Keep the title always at the top*/
+  z-index: 10;
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+/*Message text to the right*/
+#chat-page .chat-me .am-list-extra {
+  flex-basis: auto;
+  /*Width includes content*/
+}
+#chat-page .chat-me .am-list-content {
+  padding-right: 15px;
+  text-align: right;
+}
+/*# sourceMappingURL=./index.css.map */
