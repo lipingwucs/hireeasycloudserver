@@ -7,7 +7,7 @@
     "start": "node ./bin/www",
     "test": "jest",
     "test:watch": "npm test -- --watch",
-    "heroku-postbuild": "cd client && react-app-rewired build"
+    "heroku-postbuild": "cd client && npm install && react-app-rewired build"
   },
   "dependencies": {
     "blueimp-md5": "^2.10.0",
