@@ -1,6 +1,8 @@
 import React, { Component, createRef } from 'react'
 
-let GOOGLE_MAP_API_KEY = "TODO: SETUP YOUR GOOGLE MAPS API KEY";
+// TODO: REMOVE IT as this component not used anymore
+let GOOGLE_MAP_API_KEY = process.env.REACT_APP_API_KEY
+console.log("don't come here! GOOGLE_MAP_API_KEY is ", GOOGLE_MAP_API_KEY);
 
 
 export default class GoogleMap extends Component {

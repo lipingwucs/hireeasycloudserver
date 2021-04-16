@@ -18,4 +18,5 @@ export const REPORT_DETAIL = 'report_detail' //Viewed a chat message
 export const ADMIN_USER = 'admin_user' //Viewed a chat message
 export const REPORT_LIST = 'report_list' //Viewed a chat message
 export const USER_DETAIL = 'user_detail' //Viewed a chat message
+export const SYSTEM_CONFIGS = 'system_configs' //Viewed a chat message
 

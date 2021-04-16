@@ -21,7 +21,8 @@ import {
   REPORT_DETAIL,
   ADMIN_USER,
   REPORT_LIST,
-  USER_DETAIL
+  USER_DETAIL,
+  SYSTEM_CONFIGS
 } from './action-types'
 import {
   reqRegister,
@@ -43,7 +44,8 @@ import {
   reqReportUser,
   reqReportList,
   reqFindUser,
-  reqLockAccount
+  reqLockAccount,
+  reqSystemConfigs
 } from '../api'
 
 
@@ -113,6 +115,8 @@ export const readMsg = (from, to) => {
 const authSuccess = (user) => ({type: AUTH_SUCCESS, data: user})
 // Synchronous action of error message
 const errorMsg = (msg) => ({type: ERROR_MSG, data: msg})
+// Synchronous action of system configs
+const systemConfigs = (systemconfigs) => ({type: SYSTEM_CONFIGS, data: systemconfigs})
 // Receive user's synchronization action
 const receiveUser = (user) => ({type: RECEIVE_USER, data:user})
 //Reset user's synchronization action
@@ -445,6 +449,22 @@ export const lockAccount=(user)=>{
     }
     else{
       dispatch(errorMsg(result.msg));
+    }
+  }
+}
+
+
+// Asynchronous action to get system configs
+export const getSystemConfigs=()=>{
+  return async dispatch => {
+    // Perform asynchronous ajax request
+    const response = await reqSystemConfigs()
+    const result=response.data
+    if(result.code===0){
+      return dispatch(systemConfigs(result.data));
+    }
+    else{
+      return dispatch(errorMsg(result.msg));
     }
   }
 }

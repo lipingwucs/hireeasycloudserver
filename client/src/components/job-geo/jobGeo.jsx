@@ -3,11 +3,13 @@ import {
   Button
 } from 'antd-mobile'
 import {connect} from 'react-redux'
-import {getJobDetail,updateJob,deleteJob,getJobPoster,updateUser} from '../../redux/actions'
+import {getJobDetail,updateJob,deleteJob,getJobPoster,updateUser, getSystemConfigs} from '../../redux/actions'
 import MapSection from '../../components/map/Map'
 
 import Geocode from "react-geocode";
-
+//let GOOGLE_MAP_API_KEY = process.env.REACT_APP_API_KEY
+//console.log("GOOGLE_MAP_API_KEY is ", GOOGLE_MAP_API_KEY);
+//console.log(window._env_);
 
 let posterId
 
@@ -25,7 +27,7 @@ class JobGeo extends React.Component {
           expire:'' ,
           location: null,
           locationMessage: '',
-     
+          GOOGLE_MAP_API_KEY: '',
         };
       }
     
@@ -36,14 +38,24 @@ class JobGeo extends React.Component {
         console.log(resp);
         const jobDetail = resp.data;
         this.setState({postCode: jobDetail.postCode, jobTitle: jobDetail.jobTitle, company: jobDetail.company});
+
+        this.props.getSystemConfigs().then(resp => {
+          console.log("after call getSystemConfigs, call back ");
+ //         console.log(resp);
+          const GOOGLE_MAP_API_KEY = resp.data.REACT_APP_API_KEY;
+          console.log("loaded GOOGLE_MAP_API_KEY now ");
+          this.setState({GOOGLE_MAP_API_KEY: GOOGLE_MAP_API_KEY});
+          this.queryLatLng(this.state.postCode, this.state.jobTitle, this.state.company);
+        });
       });   
     }
 
     componentDidUpdate (prevProps, prevState, snapshot) {
+      /*
       if(prevState.postCode!=this.state.postCode) {
         this.queryLatLng(this.state.postCode, this.state.jobTitle, this.state.company);
       }
-
+*/
     }
 
     queryLatLng = (postCode, jobTitle, company) => {
@@ -52,7 +64,7 @@ class JobGeo extends React.Component {
         return;
       }
       // set Google Maps Geocoding API for purposes of quota management. Its optional but recommended.
-      Geocode.setApiKey("TODO: SETUP YOUR GOOGLE GEOCODE API KEY");
+      Geocode.setApiKey(this.state.GOOGLE_MAP_API_KEY);
 
       // set response language. Defaults to english.
       Geocode.setLanguage("en");
@@ -120,7 +132,7 @@ class JobGeo extends React.Component {
           {this.state.locationMessage && (<span>{this.state.locationMessag}</span>)}
          {this.state.location ? 
          (
-            <MapSection location={this.state.location} zoomLevel={zoom}></MapSection>
+            <MapSection location={this.state.location} zoomLevel={zoom} GOOGLE_MAP_API_KEY={this.state.GOOGLE_MAP_API_KEY}></MapSection>
           
             
          ) : (
@@ -136,8 +148,8 @@ class JobGeo extends React.Component {
 
 
 export default connect(
-    state=>({jobDetail:state.jobDetail,user:state.user,jobPoster:state.jobPoster}),
-    {getJobDetail,updateJob,deleteJob,getJobPoster,updateUser}
+    state=>({jobDetail:state.jobDetail,user:state.user,jobPoster:state.jobPoster, getSystemConfigs:state.getSystemConfigs}),
+    {getJobDetail,updateJob,deleteJob,getJobPoster,updateUser, getSystemConfigs}
 ) (JobGeo)
 
 
