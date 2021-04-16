@@ -56,11 +56,7 @@ function initIO(dispatch, userid) {
     // io.socket = io('ws://localhost:4000')    //local server
     //io.socket = io('ws://hireeasy-server.herokuapp.com:4000') //Nabil Server
     // io.socket = io('ws://hireeasy.herokuapp.com:4000')     // Lenard Server
-    io.socket = io('ws://hireeasycloudserver.herokuapp.com')     // Liping Cloud Server
-
-
-    
-    
+    io.socket = io('https://hireeasycloudserver.herokuapp.com')     // Liping Cloud Server
 
     //if connect to the cloud server
     //const socket = io('https://hireeasy-server.herokuapp.com')  
