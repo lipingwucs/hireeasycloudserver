@@ -322,7 +322,7 @@ router.post('/lockAccount',function(req,res){
 
 router.get('/systemconfigs', function(req, res) {
   const GOOGLE_MAP_API_KEY = (process.env.REACT_APP_API_KEY || '').trim();
-  console.log("GOOGLE_MAP_API_KEY is ", GOOGLE_MAP_API_KEY);
+  //console.log("GOOGLE_MAP_API_KEY is ", GOOGLE_MAP_API_KEY);
   res.send({code: 0,
           data: {'REACT_APP_API_KEY': GOOGLE_MAP_API_KEY,
                   'NODE_ENV': process.env.NODE_ENV || 'development'
