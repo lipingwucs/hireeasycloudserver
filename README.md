@@ -2,7 +2,8 @@
 # This repo is mainly for hireeasy app deploy on the heroku cloud.
 * HireEasy Cloud url:  https://hireeasycloudserver.herokuapp.com/
 * MongoDb (free version): https://www.mongodb.com/cloud/atlas
-* A few tips about the deployment app on cloud
+
+# A few tips about the deployment app on cloud
 
 * Read this paper to get some basic knowledge:
 [Difference Between Development, Stage, And Production](https://dev.to/flippedcoding/difference-between-development-stage-and-production-d0p)
